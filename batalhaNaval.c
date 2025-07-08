@@ -13,19 +13,20 @@ void imprimirTabuleiro(int tabuleiro[tamanhoX][tamanhoY])
     char letra = 'A';
 
     // Cabeçalho alfabetico
+    printf("  ");
     for (int i = 1; i <= tamanhoX; i++)
     {
-        printf("\t%c",letra++);
+        printf(" %c ",letra++);
     }
     printf("\n");
     
 
     for (int i = 0; i < tamanhoY; i++)
     {
-        printf("%d", i+1); // Numero das linhas 
+        printf("%2d", i+1); // Numero das linhas 
         for (int j = 0; j < tamanhoX; j++)
         {
-            printf("\t%d", tabuleiro[i][j]); // Conteudo
+            printf(" %d ", tabuleiro[i][j]); // Conteudo
         }
         printf("\n");
         
@@ -82,13 +83,42 @@ int main() {
         tabuleiro[posicaoY+i][posicaoX] = 3;        
     }
     
-    imprimirTabuleiro(tabuleiro);
+    
 
     
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+
+    // Posicionando um navio na diagonal!!
+    posicaoX = 1;
+    posicaoY = 10;
+
+    posicaoX--;
+    posicaoY--;
+
+    for (int i = 0; i < tamanhoNavio; i++)
+    {
+        // Logica Y - 1 e X + 1 = Diagonal direita para cima.
+        tabuleiro[posicaoY-i][posicaoX+i] = 3;
+    }
+
+    // Posicionando um navio na diagonal!!
+    posicaoX = 10;
+    posicaoY = 5;
+
+    posicaoX--;
+    posicaoY--;
+
+    for (int i = 0; i < tamanhoNavio; i++)
+    {
+        // Logica Y + i e X - i = Diagonal esquerda para baixo.
+        tabuleiro[posicaoY+i][posicaoX-i] = 3;
+    }
+
+    imprimirTabuleiro(tabuleiro);
+    
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
